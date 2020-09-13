@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS Code Shortcuts Quiz</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" rel="stylesheet"> 
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <header class="quizHeader">
+        <div class="wrapper">
+            <h1 class="quizHeader__text">VS Code Shortcuts Quiz</h1>
+        </div>
+    </header>
+    
+    <form action="" class="quizForm" id="quizForm1">
+        <div class="wrapper">
+            <p class="quizForm__question">Let's see if you are Visual Studio Code Ninja! Select your operating system.</p>
+            <ul class="quizForm__list">
+                <li class="quizForm__listOption">
+                    <input type="radio" id="q1" name="options" class="quizForm__listOption--checked" value="windows">
+                    <label for="q1">windows</label>
+                </li>
+                <li class="quizForm__listOption">
+                    <input type="radio" id="q2" name="options" class="quizForm__listOption--checked" value="macOS">
+                    <label for="q2">macOS</label>
+                </li>
+            </ul>
+            <button id="button" type="submit" form="quizForm1">Start</button>
+            <p class="quizForm__warning"></p>
+        </div>
+    </form>
+
+    <footer class="result">
+        <p class="result__score"></p>
+        <p class="result__copyright">Created at <a href="https://junocollege.com/" class="result__copyright--highlight">Juno College</a></p>
+    </footer>
+
+    <script src='https://code.jquery.com/jquery-3.5.1.js' integrity='sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=' crossorigin='anonymous'></script>
+    <script src="./scripts/quizApp.js"></script>
+    
+</body>
+</html>
