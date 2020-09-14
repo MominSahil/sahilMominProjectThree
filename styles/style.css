@@ -300,8 +300,8 @@ li {
 
 .quizForm {
   margin: 0 auto;
-  max-width: 62rem;
-  padding: 2rem 0;
+  max-width: 65rem;
+  padding: 2rem;
   background-color: #1B1B1B;
   border-radius: 2.5rem;
 }
@@ -320,7 +320,7 @@ li {
   color: goldenrod;
 }
 
-.quizForm button {
+.quizForm__button {
   margin-bottom: 1rem;
   padding: 0.5rem 1rem;
   background: goldenrod;
@@ -335,10 +335,13 @@ li {
   transition: all 0.5s ease;
 }
 
-.quizForm button:hover,
-.quizForm button:focus {
+.quizForm__button:hover, .quizForm__button:focus {
   background: #ea593e;
   color: #FFF;
+}
+
+.quizForm__button1, .quizForm__button2, .quizForm__button3, .quizForm__button4, .quizForm__button5, .quizForm__button6, .quizForm__button7, .quizForm__button8, .quizForm__button9, .quizForm__button10, .quizForm__button11 {
+  display: none;
 }
 
 .quizForm__warning {
@@ -347,19 +350,19 @@ li {
   text-transform: uppercase;
 }
 
-.result {
+.footnote {
   margin: 10rem 0;
   font-size: 2rem;
 }
 
-.result__score {
-  max-width: 55rem;
+.footnote__score {
+  max-width: 65rem;
   margin: 0 auto;
   background-color: #1B1B1B;
   border-radius: 2.5rem;
 }
 
-.result__copyright {
+.footnote__copyright {
   margin: 2rem 0;
   position: absolute;
   bottom: 0;
@@ -368,7 +371,7 @@ li {
           transform: translateX(-50%);
 }
 
-.result__copyright--highlight {
+.footnote__copyright--highlight {
   border-radius: 10px;
   padding: 0.5rem 1rem;
   font-style: italic;
@@ -376,7 +379,7 @@ li {
   transition: all 0.5s ease;
 }
 
-.result__copyright--highlight:hover, .result__copyright__highlight:focus {
+.footnote__copyright--highlight:hover, .footnote__copyright__highlight:focus {
   background: #ea593e;
   color: #FFF;
 }

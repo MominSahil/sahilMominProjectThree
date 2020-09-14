@@ -228,27 +228,36 @@ quizApp.macOS = [
     {question: "⌘W ", answer: " Close "},
     {question: "⌘K ⌘W ", answer: " Close All "}
 ];
+// selected topic of quiz
+quizApp.quizTopic = "";
 // array of 10 questions to be asked
 quizApp.quizList = [];
 // array of answer options per question
 quizApp.ansPerQue = [];
+// changing class on buttons for click event
+quizApp.buttonClass = 0;
+// count of number of question asked
+quizApp.count = 0;
+// score count 
+quizApp.score = 0;
 
 // function to know if user have windows of macOS
 quizApp.getTopic = function() {
-    $("#button").on("click", function(e){
-        e.preventDefault();
-        const ans = $("input:checked").val();
-        if (ans !== undefined) {
-            $(".quizForm__warning").text("");
-            $(".result__score").text("");
-            // $("#button").toggleClass("quizForm__button");
-            quizApp.quizTopic = ans;
-            quizApp.getQuestions();
-        }
-        else {
-            $(".quizForm__warning").text("Please select OS!");
-        }
-    });
+    const ans = $("input:checked").val();
+    if (ans !== undefined) {
+        $(".quizForm__warning").text("");
+        $(".result__score").text("");
+        quizApp.quizTopic = ans;
+        $("#button0").css("display", "none");
+        $("#button1").css("display", "block");
+        // quizApp.getQuestions();
+        // quizApp.startQuiz();
+    }
+    else {
+        $(".quizForm__warning").text("Please select OS!");
+        quizApp.getTopic();
+    }
+    console.log("getTopic is working");
 }
 
 // set question list
@@ -256,46 +265,111 @@ quizApp.getQuestions = function() {
     for(let i = 0; i < 10; i++) {
         quizApp.populateArray(quizApp.quizList);
     }
-    quizApp.displayQuiz();
+    console.log("getQuestion is working");
+    quizApp.startQuiz();
 }
 
 // function to populate array
 quizApp.populateArray = function(array) {
-    const entireList = quizApp[quizApp.quizTopic];
-    const number = Math.floor(Math.random() * entireList.length);
+    // const entireList = quizApp[quizApp.quizTopic];
+    const number = Math.floor(Math.random() * quizApp[quizApp.quizTopic].length);
     const length = array.length;
     for (let i = 0; i < length; i++) {
-        if (number === array[i]) {
+        if (number == array[i]) {
             quizApp.populateArray(array);
         }
     }
     array.push(number);
 }
 
-// function to display quiz
-quizApp.displayQuiz = function() {
-    for (let i = 0; i < 10; i++) {
-        const topic = quizApp.quizTopic;
-        const queNum = quizApp.quizList[i];
-        const answer = quizApp[topic][queNum].answer;
-        quizApp.ansPerQue = [];
-        quizApp.ansPerQue.push(queNum);
-        for (let i = 0; i < 3; i++) {
-            quizApp.populateArray(quizApp.ansPerQue);
-        }
-        quizApp.ansPerQue.sort();
-        // console.log(quizApp.ansPerQue);
-        
-
+// function to run 10 questions in the quiz
+quizApp.startQuiz = function() {
+    for (quizApp.count = 0; quizApp.count < 10; quizApp.count++) {
+        const queNum = quizApp.quizList[quizApp.count];
+        const question = quizApp[quizApp.quizTopic][queNum].question;
+        const answer = quizApp[quizApp.quizTopic][queNum].answer;
+        quizApp.setOptions(queNum);
+        quizApp.displayQuiz(question);
+        $("#button1").on("click", function(){
+            const selectedAns = $("input:checked").val();
+            quizApp.score += quizApp.checkAnswer(answer, selectedAns);
+        });
     }
+    console.log("startQuiz is working");
+    quizApp.displayResult(); 
+}
+
+// function to start set up quiz question and answer options
+quizApp.setOptions = function(queNum) {
+    quizApp.ansPerQue = [];
+    quizApp.ansPerQue.push(queNum);
+    for (let i = 0; i < 3; i++) {
+        quizApp.populateArray(quizApp.ansPerQue);
+    }
+    quizApp.ansPerQue.sort();
+    console.log("setOptions is working");
+}
+
+// function to display questions and answer options on page
+quizApp.displayQuiz = function(question) {
+    $(".quizForm__question").text(question);
+    $(".quizForm__listOption label").text("");
+    // $(".quizForm__listOption--checked").val("");
+    $(".quizForm__list").html("");
+    // const topic = quizApp.quizTopic;
+    for (let i = 0; i < 4; i++) {
+        const itemNum = quizApp.ansPerQue[i];
+        const answer = quizApp[quizApp.quizTopic][itemNum].answer;
+        $(".quizForm__list").append(`<li class="quizForm__listOption">
+            <input type="radio" id="q${i+1}" name="options" class="quizForm__listOption--checked" value="${answer}">
+            <label for="q${i+1}">${answer}</label>
+        </li>`);
+    }
+    console.log("displayQuiz is working");
+    // const score = quizApp.checkAnswer(correctAns);
+    // return score;
+}
+
+quizApp.checkAnswer = function(correctAnswer, selectedAns) {
+    if (selectedAns == correctAnswer) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+    console.log("checkAnswer is working");
+};
+
+// function to display final result
+quizApp.displayResult = function() {
+    if (quizApp.score == 10) {
+        $(".quizForm__question").text(`You scored 10/10. You are a VS code Ninja!`);
+    }
+    else {
+        $(".quizForm__question").text(`You scored ${quizApp.score}/10.`);
+        //  You can practice more at are a <a src="https://code.visualstudio.com/docs/">VisualStudioCode.com</a>
+    }
+    $("#button1").css("display", "none");
+    $("#button2").css("display", "block");
+    $(".quizForm__list").html("");
+    console.log("displayResult is working");
 }
 
 // function to initialize quizApp
-quizApp.init = () => {
-    quizApp.getTopic();
+quizApp.init = function() {
+    console.log("init is working");
+    $(".quizForm__button0").on("click", function(e) {
+        e.preventDefault();
+        quizApp.getTopic();
+        quizApp.getQuestions();
+        // quizApp.startQuiz();
+        // quizApp.displayResult();
+    });
+
 }
 
 $(document).ready(function(){
+    console.log("docReady is working");
     quizApp.init();
 })
 

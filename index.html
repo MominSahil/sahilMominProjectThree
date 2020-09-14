@@ -14,27 +14,31 @@
         </div>
     </header>
     
-    <form action="" class="quizForm" id="quizForm1">
+    <section>
         <div class="wrapper">
-            <p class="quizForm__question">Let's see if you are Visual Studio Code Ninja! Select your operating system.</p>
-            <ul class="quizForm__list">
-                <li class="quizForm__listOption">
-                    <input type="radio" id="q1" name="options" class="quizForm__listOption--checked" value="windows">
-                    <label for="q1">windows</label>
-                </li>
-                <li class="quizForm__listOption">
-                    <input type="radio" id="q2" name="options" class="quizForm__listOption--checked" value="macOS">
-                    <label for="q2">macOS</label>
-                </li>
-            </ul>
-            <button id="button" type="submit" form="quizForm1">Start</button>
-            <p class="quizForm__warning"></p>
+            <form action="" class="quizForm" id="quizForm1">
+                <p class="quizForm__question">Let's see if you are Visual Studio Code Ninja! Select your operating system.</p>
+                <ul class="quizForm__list">
+                    <li class="quizForm__listOption">
+                        <input type="radio" id="q1" name="options" class="quizForm__listOption--checked" value="windows">
+                        <label for="q1">windows</label>
+                    </li>
+                    <li class="quizForm__listOption">
+                        <input type="radio" id="q2" name="options" class="quizForm__listOption--checked" value="macOS">
+                        <label for="q2">macOS</label>
+                    </li>
+                </ul>
+                <button class="quizForm__button quizForm__button0" type="submit" form="quizForm1" id="button0">Start</button>
+                <button class="quizForm__button quizForm__button1" type="submit" form="quizForm1" id="button1">Next</button>
+                <button class="quizForm__button quizForm__button2" type="submit" form="quizForm1" id="button2">Restart Quiz</button>
+                <p class="quizForm__warning"></p>
+            </form>
         </div>
-    </form>
+    </section>
 
-    <footer class="result">
-        <p class="result__score"></p>
-        <p class="result__copyright">Created at <a href="https://junocollege.com/" class="result__copyright--highlight">Juno College</a></p>
+    <footer class="footnote">
+        <!-- <p class="result__score"></p> -->
+        <p class="footnote__copyright">Created at <a href="https://junocollege.com/" class="footnote__copyright--highlight">Juno College</a></p>
     </footer>
 
     <script src='https://code.jquery.com/jquery-3.5.1.js' integrity='sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=' crossorigin='anonymous'></script>
