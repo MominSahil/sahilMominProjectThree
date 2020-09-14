@@ -340,10 +340,6 @@ li {
   color: #FFF;
 }
 
-.quizForm__button1, .quizForm__button2, .quizForm__button3, .quizForm__button4, .quizForm__button5, .quizForm__button6, .quizForm__button7, .quizForm__button8, .quizForm__button9, .quizForm__button10, .quizForm__button11 {
-  display: none;
-}
-
 .quizForm__warning {
   margin: 0 auto;
   color: lawngreen;
