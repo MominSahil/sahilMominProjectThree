@@ -25,15 +25,15 @@ html {
 
 body {
      min-height: 100vh;
-     font-family: 'Roboto Slab', serif;
-     font-size: 2.2rem;
+     font-family: $fontMain;
+     font-size: clamp(1.6rem, 3vw, 2.2rem);
      letter-spacing: 1.5px;
-     background-color: #1B1B1B;
+     background-color: $black;
      background-image: url(../assets/body.jpg);
      background-size: cover;
      background-position: right;
      background-repeat: no-repeat;
-     color: #ea593e;
+     color: $red;
      text-align: center;
 }
 
@@ -51,10 +51,10 @@ img {
 
 a {
      text-decoration: none;
-     color: goldenrod;
+     color: $gold;
 }
 
 li {
      list-style: none;
-     line-height: 3.5rem;
+     line-height: clamp(2.4rem, 3vw, 3.5rem);
 }

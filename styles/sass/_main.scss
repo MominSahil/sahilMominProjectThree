@@ -1,73 +1,77 @@
+// start of .quizHeader
 .quizHeader {
     min-height: 10vh;
     &__text {
         padding: 5rem 0;
-        font-size: 5.8rem;
+        font-size: clamp(3.5rem, 6.5vw, 5.8rem);
         font-weight: 400;
-        color: goldenrod;
-        // color: lightgreen;
-        font-family: 'Ruda', sans-serif;
+        color: $gold;
+        font-family: $fontOther;
     }
 }
+// End of .quizHeader
 
+// start of .quizForm
 .quizForm {
     margin: 0 auto;
     max-width: 65rem;
-    padding: 2rem;
-    background-color: #1B1B1B;
+    padding: 2rem 2rem 1rem;
+    background-color: $black;
     border-radius: 2.5rem;
     &__question {
         text-align: left;
     }
     &__list {
         text-align: left;
-        font-size: 2rem;
+        font-size: clamp(1.6rem, 3vw, 2rem);
         padding: 2rem 0;
     }
-    &__listOption--checked:checked ~ label {
-        color: goldenrod;
+    &__listOption--checked ~ label {
+        transition: all 0.3s ease;
     }
-
+    &__listOption--checked:checked ~ label,
+    &__listOption--checked:hover ~ label,
+    &__listOption--checked:focus ~ label {
+        color: $gold;
+    }
+    // start of .quizForm__button
     &__button {
         margin-bottom: 1rem;
         padding: 0.5rem 1rem;
-        background: goldenrod;
+        background: $gold;
         border: none;
         border-radius: 10px;
-        font-size: 3.8rem;
-        color: #1d1f1e;
-        font-family: 'Ruda', sans-serif;
+        font-size: clamp(2.5rem, 4vw, 3.8rem);
+        color: $black;
+        font-family: $fontOther;
         letter-spacing: 2px;
         text-transform: uppercase;
         transition: all 0.5s ease;
     }
     &__button:hover,
     &__button:focus {
-        background: #ea593e;
+        background: $red;
         color: #FFF;
     }
+    // end of .quizForm__button
     &__warning {
         margin: 0 auto;
-        color: lawngreen;
+        color: $green;
         text-transform: uppercase;
     }
 }
+// end of .quizForm
 
+// start of .footnote
 .footnote {
-    margin: 10rem 0;
-    font-size: 2rem;
-    &__score {
-        max-width: 65rem;
-        margin: 0 auto;
-        background-color: #1B1B1B;
-        border-radius: 2.5rem;
-    }
+    margin: 5rem 0;
+    font-size: clamp(1.5rem, 3vw, 2rem);
     &__copyright {
-        margin: 2rem 0;
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
+        margin: 2rem auto;
+        max-width: 65rem;
+        padding: 1rem;
+        border-radius: 2rem;
+        background-color: $black;
     }
     &__copyright--highlight {
         border-radius: 10px;
@@ -77,7 +81,8 @@
     }
     &__copyright--highlight:hover,
     &__copyright__highlight:focus {
-        background: #ea593e;
+        background: $red;
         color: #FFF;
     }
 }
+// end of .footnote

@@ -1,0 +1,37 @@
+// start of media query @ max-width: 768px
+@media(max-width: 768px) {
+    body {
+        font-weight: 400;
+    }
+    .wrapper {
+        width: 100%;
+    }
+    // start of media query for .quizHeader__text
+    .quizHeader__text {
+        padding: 2rem;
+    }
+    // end of media query for .quizHeader__text
+
+    // start of media query for .quizForm
+    .quizForm {
+        width: 100%;
+        border-radius: 0;
+        &__list {
+            padding: 1rem 0;
+        }
+    }
+    // end of media query for .quizForm
+
+    // start of .footnote
+    .footnote {
+        margin: 2rem 0;
+        &__copyright {
+            width: 100%;
+            margin-bottom: 0;
+            border-radius: 0;
+            background-color: transparent;
+        }
+    }
+    // end of .footnote
+}
+// end of media query @ max-width: 768px

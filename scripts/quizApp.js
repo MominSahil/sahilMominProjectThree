@@ -1,6 +1,6 @@
-// - quizApp.windows holds all the shortcuts and its answers for windows OS in the form of array.
 const quizApp = {};
 
+// - quizApp.windows holds all the shortcuts and its answers for windows OS in the form of array.
 quizApp.windows = [
     {question: "Ctrl+Shift+P,F1", answer: "Show Command Palette"},
     {question: "Ctrl+P", answer: "Quick Open, Go to File..."},
@@ -240,7 +240,7 @@ quizApp.score = 0;
 // for changing button id for click event
 quizApp.buttonClass = 0;
 
-// function to know if user have windows of macOS
+// function to get windows or macOS topic
 quizApp.getTopic = function() {
     const ans = $("input:checked").val();
     if (ans !== undefined) {
@@ -289,7 +289,6 @@ quizApp.startQuiz = function() {
         $(".quizForm__button").attr("id", `button${quizApp.buttonClass}`);
         $(`#button${quizApp.buttonClass}`).on("click", function(e){
             e.preventDefault();
-            let selectedAns = "";
             selectedAns = $("input:checked").val();
             $(`#button${quizApp.buttonClass}`).off("click");
             // checking if answer is selected
@@ -351,12 +350,10 @@ quizApp.displayResult = function() {
         $(".quizForm__question").text(`You scored 10/10. You are a VS code Ninja!`);
     }
     else {
-        $(".quizForm__question").html(`You scored ${quizApp.score}/10. You can practice more at are a <a src="https://code.visualstudio.com/docs/">VisualStudioCode.com</a>`);
-        //  You can practice more at are a <a src="https://code.visualstudio.com/docs/">VisualStudioCode.com</a>
+        $(".quizForm__question").html(`You scored ${quizApp.score}/10. You can practice more at are a <a href="https://code.visualstudio.com/docs/">VisualStudioCode.com</a>`);
     }
     $("button").text("Restart Quiz");
     $(".quizForm__list").html("");
-    console.log("displayResult is working");
 }
 
 // function to initialize quizApp
@@ -376,26 +373,3 @@ quizApp.init = function() {
 $(document).ready(function(){
     quizApp.init();
 })
-
-// js
-
-// - First impression is displaying paragraph as "let's start" and the next button will say start. submit button will be hidden.
-// - when user clicks on start button, text will change to "next"
-// - A function will select random number from 0 to length of array.
-// - That will be the question and answer.
-// - another function will select other three random answers from the array that are not correct and add to the list.
-// - The list will be sorted alphbetically and added to the input of the form.
-// - the user will select a radio button with the answer and click submit.
-// - if the answer is right, the process will repeat 9 more time making sure the same question is not repeated.
-// - a counter will check how many answers are right.
-// to add padding-->  $(".result__score").css("padding", "2rem");
-// - if all the answers are right then a message will be displayed with score saying the user won.
-// - if any answer is wrong the message will display the score and a link to VS Code shortcut page.
-
-// Stretch goals
-// - add MacOS and windows buttons to let the user select which OS they have.
-// - checked answer to change color to goldenrod
-// - random motivation quote in the end.
-// - next question fade in/out animation.
-// - final score animation.
-

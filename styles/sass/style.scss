@@ -1,4 +1,11 @@
-
+// declaring variables
+$red: #ea593e;
+$gold: #daa520;
+$black: #1b1b1b;
+$green: #7cfc00;
+$fontMain: 'Roboto Slab', serif;
+$fontOther: 'Ruda', sans-serif;
 
 @import "_setup";
 @import "_main";
+@import "_mediaQuery";
